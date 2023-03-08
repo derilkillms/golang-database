@@ -2,13 +2,12 @@ package golang_database
 
 import (
 	"database/sql"
-	"testing"
 	"time"
 
 	_ "github.com/go-sql-driver/mysql"
 )
 
-func GetConnection(t *testing.T) {
+func GetConnection() *sql.DB {
 	db, err := sql.Open("mysql", "root:@tcp(localhost:3306)/belajar_golang_db")
 	if err != nil {
 		panic(err)
@@ -19,5 +18,5 @@ func GetConnection(t *testing.T) {
 	db.SetConnMaxIdleTime(5 * time.Minute)
 	db.SetConnMaxLifetime(60 * time.Minute)
 	//gunakan DB
-	defer db.Close()
+	return db
 }

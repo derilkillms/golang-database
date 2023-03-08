@@ -13,8 +13,6 @@ func TestOpenConnection(t *testing.T) {
 		panic(err)
 	}
 
-	db.SetConnMaxIdleTime(10)
-
 	//gunakan DB
 	defer db.Close()
 }
